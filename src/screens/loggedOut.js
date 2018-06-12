@@ -5,6 +5,14 @@ import RoundedButton from '../components/buttons/roundedButton';
 import { FontAwesome } from '@expo/vector-icons';
 
 export default class LoggedOut extends Component {
+  onFacebookPress() {
+    alert('facebook button pressed')
+  }
+
+  onCreateAccount() {
+    alert('create account button pressed')
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -17,7 +25,14 @@ export default class LoggedOut extends Component {
           text="Continue with Facebook"
           backgroundColor={Colors.white}
           color={Colors.facebookBlue}
-          icon={<FontAwesome name="facebook" size={20} color={Colors.facebookBlue} />}
+          icon={<FontAwesome name="facebook" size={20} style={styles.buttonIcon} />}
+          handleOnPress={this.onFacebookPress}
+          />
+          <RoundedButton
+          text="Create a new account"
+          backgroundColor={Colors.white}
+          color={Colors.green01}
+          handleOnPress={this.onCreateAccount}
           />
         </View>
       </View>
@@ -48,5 +63,11 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontWeight: '300',
     marginBottom: 50
+  },
+  buttonIcon: {
+    color: Colors.facebookBlue,
+    position: 'relative',
+    left: 20,
+    zIndex: 8,
   }
 });
