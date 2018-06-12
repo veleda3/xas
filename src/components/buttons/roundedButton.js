@@ -6,15 +6,18 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default class RoundedButton extends React.Component {
 
+
   render() {
-    const { text, backgroundColor, color, icon } = this.props;
+    const { text, backgroundColor, color, icon, handleOnPress } = this.props;
 
 
     return (
-      <TouchableHighlight style={[{backgroundColor}, styles.container]}>
-        <View>
-          <FontAwesome name="facebook" size={20} color={Colors.facebookBlue} />
-          icon
+      <TouchableHighlight
+      style={[{backgroundColor}, styles.container]}
+      onPress={handleOnPress}
+      >
+        <View style={styles.buttonIconWrapper}>
+          {icon}
           <Text style={[{color}, styles.buttonText]}>{text}</Text>
         </View>
       </TouchableHighlight>
@@ -26,7 +29,8 @@ RoundedButton.propTypes = {
   text: propTypes.string.isRequired,
   backgroundColor: propTypes.string,
   color: propTypes.string,
-  icon: propTypes.object
+  icon: propTypes.object,
+  handleOnPress: propTypes.func.isRequired
 
 }
 
@@ -38,6 +42,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.white
 
+  },
+  buttonIconWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
   buttonText: {
     fontSize: 17,
