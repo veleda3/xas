@@ -40,7 +40,9 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 40,
     borderWidth: 1,
-    borderColor: Colors.white
+    borderColor: Colors.white,
+    marginBottom: 15,
+    alignItems: 'center'
 
   },
   buttonIconWrapper: {
