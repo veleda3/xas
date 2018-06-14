@@ -2,30 +2,58 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import Colors from '../../styles/colors';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Easing, Animated } from 'react-native';
 
 export default class Notification extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      positionValue: new Animated.Value(60)
+    }
+  }
+
+  animateNofication(value) {
+    const {positionValue} = this.state
+    Animated.timing(
+      positionValue,
+      {
+        toValue: value,
+        duration: 400,
+        velocity: 3,
+        tension: 2,
+        friction: 8,
+        easing: Easing.easeOutBack
+      }
+    ).start()
+  }
   render() {
-    const {type, firstLine, secondLine} = this.props
+    const {type, firstLine, secondLine, handleCloseNotification, showNotification } = this.props
+    const {positionValue} = this.state
+    showNotification ? this.animateNofication(0) : this.animateNofication(60)
     return(
-      <View style={styles.container}>
+      <Animated.View style={[{transform: [{translateY: positionValue}]}, styles.container]}>
         <View style={styles.notificationContent}>
           <Text style={styles.errorType}>{type}</Text>
           <Text style={styles.errorMessage}>{firstLine}</Text>
           <Text style={styles.errorMessage}>{secondLine}</Text>
         </View>
-        <TouchableOpacity style={styles.iconTouch}>
+        <TouchableOpacity
+        onPress={handleCloseNotification}
+        style={styles.iconTouch}
+        >
           <FontAwesome name="times" size={20} color={Colors.lightGray} />
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     )
   }
 }
 
 Notification.propTypes = {
-  type: propTypes.string,
+  showNotification: propTypes.bool.isRequired,
+  type: propTypes.string.isRequired,
   firstLine: propTypes.string,
-  secondLine: propTypes.string
+  secondLine: propTypes.string,
+  handleCloseNotification: propTypes.func
 }
 
 const styles = StyleSheet.create({
