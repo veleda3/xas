@@ -8,14 +8,28 @@ import NextButton from '../components/buttons/nextButton';
 import Notification from '../components/forms/Notification';
 
 export default class LogIn extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      formValid: true
+    }
+    this.handleCloseNotification = this.handleCloseNotification.bind(this)
+  }
   handleNextButton() {
     alert('Next Botton pressed')
   }
 
+  handleCloseNotification() {
+    this.setState({formValid: false})
+  }
+
   render() {
+    const { formValid } = this.state
+    const backgroundColor = formValid ? Colors.red : Colors.facebookBlue
     return (
       <KeyboardAvoidingView
-      style={styles.container}
+      style={[{backgroundColor}, styles.container]}
       behavior="padding"
       >
         <View style={styles.scrollViewContainer}>
@@ -41,6 +55,8 @@ export default class LogIn extends React.Component {
           </View>
           <View>
             <Notification
+            showNotification={formValid}
+            handleCloseNotification={this.handleCloseNotification}
             type="Error"
             firstLine="It looks like you got the wrong credentials"
             secondLine="Please try again" />
@@ -55,7 +71,6 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flex: 1,
-    backgroundColor: Colors.facebookBlue,
   },
   logoContainer: {
     alignItems: 'center'
