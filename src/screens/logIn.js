@@ -5,7 +5,7 @@ import Colors from '../styles/colors';
 import { FontAwesome } from '@expo/vector-icons';
 import InputField from '../components/forms/inputField';
 import NextButton from '../components/buttons/nextButton';
-
+import Notification from '../components/forms/Notification';
 
 export default class LogIn extends React.Component {
   handleNextButton() {
@@ -38,6 +38,12 @@ export default class LogIn extends React.Component {
           <View style={styles.nextButton}>
           <NextButton
           handleNextButton={this.handleNextButton} />
+          </View>
+          <View>
+            <Notification
+            type="Error"
+            firstLine="It looks like you got the wrong credentials"
+            secondLine="Please try again" />
           </View>
         </View>
       </KeyboardAvoidingView>
