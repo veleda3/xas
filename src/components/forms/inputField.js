@@ -5,18 +5,36 @@ import propTypes from 'prop-types';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 
 export default class InputField extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      secureInput: this.props.inputType === "text" || this.props.inputType === "email" ? false : true
+    }
+    this.toggleShowPassword = this.toggleShowPassword.bind(this)
+  }
+
+  toggleShowPassword() {
+    this.setState({secureInput: !this.state.secureInput})
+  }
   render() {
     const { labelText, textSize, textColor, textFieldColor, borderBottomColor, inputType } = this.props
+    const {secureInput} = this.state
     const fontSize = textSize || 14;
     const color = textColor
     const borderColor = borderBottomColor || 'transparent'
     return (
       <View style={styles.container}>
         <Text style={[{color, fontSize}, styles.textInput]}>{labelText}</Text>
+        {inputType==="password" ?
+         <TouchableOpacity
+          style={styles.toggleContainer}
+          onPress={this.toggleShowPassword}>
+          <Text style={styles.toggleText}>{secureInput ? 'show' : 'hide'}</Text>
+         </TouchableOpacity> : null}
         <TextInput
         autoCorrect={false}
         style={[{borderColor, color: textFieldColor}, styles.textField]}
-        secureTextEntry={inputType === "password"} />
+        secureTextEntry={secureInput} />
       </View>
     )
   }
@@ -46,5 +64,13 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
     borderColor: Colors.white
+  },
+  toggleContainer: {
+    position: 'absolute',
+    right: 0,
+  },
+  toggleText: {
+    color: Colors.white,
+    fontWeight: '700'
   }
 })

@@ -14,13 +14,12 @@ export default class LogIn extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView
+      style={styles.container}
+      behavior="padding"
+      >
         <View style={styles.scrollViewContainer}>
-        <View style={styles.logoContainer}>
-          <Image source={require('../img/logo2.png')}
-          style={styles.logo}
-          />
-        </View>
+
           <ScrollView style={styles.scrollView}>
             <Text style={styles.logInHeader}>Log In</Text>
             <InputField
@@ -80,6 +79,6 @@ const styles = StyleSheet.create({
   nextButton: {
     alignItems: 'flex-end',
     right: 20,
-    bottom: 5
+    bottom: 20
   }
 })
