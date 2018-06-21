@@ -26,7 +26,9 @@ export default class LogIn extends React.Component {
 
   render() {
     const { formValid } = this.state
+    const showNotification = formValid ? false : true
     const backgroundColor = formValid ? Colors.red : Colors.facebookBlue
+    const notificationMarginTop = showNotification ? 10 : 0
     return (
       <KeyboardAvoidingView
       style={[{backgroundColor}, styles.container]}
@@ -53,7 +55,7 @@ export default class LogIn extends React.Component {
           <NextButton
           handleNextButton={this.handleNextButton} />
           </View>
-          <View>
+          <View style={[styles.NotificationContainer, {marginTop: notificationMarginTop}]}>
             <Notification
             showNotification={formValid}
             handleCloseNotification={this.handleCloseNotification}
@@ -101,5 +103,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     right: 20,
     bottom: 20
+  },
+  NotificationContainer: {
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 9
   }
 })
