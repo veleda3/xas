@@ -38,8 +38,8 @@ export default class Notification extends React.Component {
           <Text style={styles.errorMessage}>{secondLine}</Text>
         </View>
         <TouchableOpacity
-        onPress={handleCloseNotification}
-        style={styles.iconTouch}
+          onPress={handleCloseNotification}
+          style={styles.iconTouch}
         >
           <FontAwesome name="times" size={20} color={Colors.lightGray} />
         </TouchableOpacity>

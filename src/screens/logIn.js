@@ -12,22 +12,66 @@ export default class LogIn extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      formValid: true
+      formNotValid: true,
+      validEmail: false,
+      emailAddress: '',
+      validPassword: false,
+
     }
     this.handleCloseNotification = this.handleCloseNotification.bind(this)
+    this.handleValidEmail = this.handleValidEmail.bind(this)
+    this.handleNextButton = this.handleNextButton.bind(this)
+    this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
   handleNextButton() {
-    alert('Next Botton pressed')
+    if(this.state.emailAddress === "velez@velezda.com" && this.state.validPassword) {
+      this.setState({formNotValid: false})
+      alert('login succes')
+    } else {
+      console.log(this.state.formValid)
+      this.setState({formNotValid: true})
+    }
   }
 
   handleCloseNotification() {
-    this.setState({formValid: false})
+    this.setState({formNotValid: false })
   }
 
+  handleValidEmail(email) {
+    const emailCheckRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!this.state.validEmail) {
+      if(emailCheckRegex.test(email)) {
+        this.setState({emailAddress: email})
+      }
+    } else {
+      if (!emailCheckRegex.test(email)) {
+        this.setState({validEmail: false})
+      }
+    }
+  }
+
+  handlePasswordChange(event) {
+    console.log(event)
+    if(!this.state.validPassword) {
+      if(event.length > 4) {
+        this.setState({validPassword: true})
+      }
+    }
+    else if(this.state.password < 5) {
+      this.setState({validPassword: false})
+    }
+  }
+  toggleNextButtonState() {
+    const {validPassword, validEmail} = this.state
+    if(validPassword && validEmail) {
+      return true
+    }
+    return false
+  }
   render() {
-    const { formValid } = this.state
-    const showNotification = formValid ? false : true
-    const backgroundColor = formValid ? Colors.red : Colors.facebookBlue
+    const { formNotValid } = this.state
+    const showNotification = formNotValid ? false : true
+    const backgroundColor = formNotValid ? Colors.red : Colors.facebookBlue
     const notificationMarginTop = showNotification ? 10 : 0
     return (
       <KeyboardAvoidingView
@@ -39,29 +83,36 @@ export default class LogIn extends React.Component {
           <ScrollView style={styles.scrollView}>
             <Text style={styles.logInHeader}>Log In</Text>
             <InputField
-            labelText="Email Address"
-            textSize={14}
-            textColor={Colors.white}
-            textFieldColor={Colors.white}
-            inputType="email" />
+              labelText="Email Address"
+              textSize={14}
+              textColor={Colors.white}
+              textFieldColor={Colors.white}
+              inputType="email"
+              onChangeText={this.handleValidEmail}
+            />
             <InputField
-            labelText="Password"
-            textSize={14}
-            textColor={Colors.white}
-            textFieldColor={Colors.white}
-            inputType="password" />
+              labelText="Password"
+              textSize={14}
+              textColor={Colors.white}
+              textFieldColor={Colors.white}
+              inputType="password"
+              onChangeText={this.handlePasswordChange}
+             />
           </ScrollView>
           <View style={styles.nextButton}>
-          <NextButton
-          handleNextButton={this.handleNextButton} />
+            <NextButton
+              handleNextButton={this.handleNextButton}
+              disable={this.toggleNextButtonState}
+            />
           </View>
           <View style={[styles.NotificationContainer, {marginTop: notificationMarginTop}]}>
             <Notification
-            showNotification={formValid}
-            handleCloseNotification={this.handleCloseNotification}
-            type="Error"
-            firstLine="It looks like you got the wrong credentials"
-            secondLine="Please try again" />
+              showNotification={formNotValid}
+              handleCloseNotification={this.handleCloseNotification}
+              type="Error"
+              firstLine="It looks like you got the wrong credentials"
+              secondLine="Please try again"
+            />
           </View>
         </View>
       </KeyboardAvoidingView>
