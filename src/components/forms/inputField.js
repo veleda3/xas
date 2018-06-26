@@ -17,7 +17,7 @@ export default class InputField extends React.Component {
     this.setState({secureInput: !this.state.secureInput})
   }
   render() {
-    const { labelText, textSize, textColor, textFieldColor, borderBottomColor, inputType } = this.props
+    const { labelText, textSize, textColor, textFieldColor, borderBottomColor, inputType, onChangeText } = this.props
     const {secureInput} = this.state
     const fontSize = textSize || 14;
     const color = textColor
@@ -34,7 +34,9 @@ export default class InputField extends React.Component {
         <TextInput
         autoCorrect={false}
         style={[{borderColor, color: textFieldColor}, styles.textField]}
-        secureTextEntry={secureInput} />
+        secureTextEntry={secureInput}
+        onChangeText={onChangeText}
+        />
       </View>
     )
   }
@@ -45,7 +47,8 @@ InputField.propTypes = {
   textSize: propTypes.number,
   textFieldColor: propTypes.string,
   borderBottomColor: propTypes.string,
-  inputType: propTypes.string.isRequired
+  inputType: propTypes.string.isRequired,
+  onChangeText: propTypes.func,
 
 }
 
