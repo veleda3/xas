@@ -8,7 +8,7 @@ export default class Notification extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      positionValue: new Animated.Value(60)
+      positionValue: new Animated.Value(-60)
     }
   }
 
@@ -18,7 +18,7 @@ export default class Notification extends React.Component {
       positionValue,
       {
         toValue: value,
-        duration: 400,
+        duration: 300,
         velocity: 3,
         tension: 2,
         friction: 8,
@@ -29,9 +29,9 @@ export default class Notification extends React.Component {
   render() {
     const {type, firstLine, secondLine, handleCloseNotification, showNotification } = this.props
     const {positionValue} = this.state
-    showNotification ? this.animateNofication(0) : this.animateNofication(60)
+    showNotification ? this.animateNofication(0) : this.animateNofication(-60)
     return(
-      <Animated.View style={[{transform: [{translateY: positionValue}]}, styles.container]}>
+      <Animated.View style={[{marginBottom: positionValue}, styles.container]}>
         <View style={styles.notificationContent}>
           <Text style={styles.errorType}>{type}</Text>
           <Text style={styles.errorMessage}>{firstLine}</Text>
