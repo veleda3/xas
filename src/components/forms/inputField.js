@@ -22,6 +22,7 @@ export default class InputField extends React.Component {
     const fontSize = textSize || 14;
     const color = textColor
     const borderColor = borderBottomColor || 'transparent'
+    const keyboardType = inputType === 'email' ? 'email-address' : 'default'
     return (
       <View style={styles.container}>
         <Text style={[{color, fontSize}, styles.textInput]}>{labelText}</Text>
@@ -36,6 +37,7 @@ export default class InputField extends React.Component {
         style={[{borderColor, color: textFieldColor}, styles.textField]}
         secureTextEntry={secureInput}
         onChangeText={onChangeText}
+        keyboardType={keyboardType}
         />
       </View>
     )
