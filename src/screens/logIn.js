@@ -39,6 +39,7 @@ export default class LogIn extends React.Component {
       }
 
     }, 2000)
+    console.log(this.state.validEmail)
   }
 
   handleCloseNotification() {
@@ -47,16 +48,13 @@ export default class LogIn extends React.Component {
 
   handleValidEmail(email) {
     const emailCheckRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    if (!this.state.validEmail) {
+
       if(emailCheckRegex.test(email)) {
-        this.setState({emailAddress: email})
-      }
-    } else {
-      if (!emailCheckRegex.test(email)) {
+        this.setState({emailAddress: email, validEmail: true})
+      } else if (!emailCheckRegex.test(email)) {
         this.setState({validEmail: false})
       }
     }
-  }
 
   handlePasswordChange(event) {
     if(!this.state.validPassword) {
@@ -76,7 +74,7 @@ export default class LogIn extends React.Component {
     return false
   }
   render() {
-    const { formNotValid, loadingVisible } = this.state
+    const { formNotValid, loadingVisible, validEmail, validPassword } = this.state
     const showNotification = formNotValid ? false : true
     const backgroundColor = formNotValid ? Colors.red : Colors.facebookBlue
     const notificationMarginTop = showNotification ? 10 : 0
@@ -96,6 +94,7 @@ export default class LogIn extends React.Component {
               textFieldColor={Colors.white}
               inputType="email"
               onChangeText={this.handleValidEmail}
+              showCheckmark={validEmail}
             />
             <InputField
               labelText="Password"
@@ -104,6 +103,7 @@ export default class LogIn extends React.Component {
               textFieldColor={Colors.white}
               inputType="password"
               onChangeText={this.handlePasswordChange}
+              showCheckmark={validPassword}
              />
           </ScrollView>
           <View style={styles.nextButton}>
