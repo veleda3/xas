@@ -6,6 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import InputField from '../components/forms/inputField';
 import NextButton from '../components/buttons/nextButton';
 import Notification from '../components/forms/Notification';
+import Loader from '../components/loader';
 
 export default class LogIn extends React.Component {
 
@@ -16,6 +17,7 @@ export default class LogIn extends React.Component {
       validEmail: false,
       emailAddress: '',
       validPassword: false,
+      loadingVisible: false
 
     }
     this.handleCloseNotification = this.handleCloseNotification.bind(this)
@@ -24,13 +26,19 @@ export default class LogIn extends React.Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
   handleNextButton() {
-    if(this.state.emailAddress === "velez@velezda.com" && this.state.validPassword) {
-      this.setState({formNotValid: false})
-      alert('login succes')
-    } else {
-      console.log(this.state.formValid)
-      this.setState({formNotValid: true})
-    }
+    //simulating a slow server
+    this.setState({loadingVisible:true})
+    setTimeout(() => {
+      if(this.state.emailAddress === "velez@velezda.com" && this.state.validPassword) {
+        this.setState({formNotValid: false, loadingVisible:false})
+
+      } else {
+        console.log(this.state.formValid)
+        this.setState({formNotValid: true, loadingVisible:false})
+
+      }
+
+    }, 2000)
   }
 
   handleCloseNotification() {
@@ -51,13 +59,12 @@ export default class LogIn extends React.Component {
   }
 
   handlePasswordChange(event) {
-    console.log(event)
     if(!this.state.validPassword) {
       if(event.length > 4) {
         this.setState({validPassword: true})
       }
     }
-    else if(this.state.password < 5) {
+    else if(event.length < 5) {
       this.setState({validPassword: false})
     }
   }
@@ -69,7 +76,7 @@ export default class LogIn extends React.Component {
     return false
   }
   render() {
-    const { formNotValid } = this.state
+    const { formNotValid, loadingVisible } = this.state
     const showNotification = formNotValid ? false : true
     const backgroundColor = formNotValid ? Colors.red : Colors.facebookBlue
     const notificationMarginTop = showNotification ? 10 : 0
@@ -115,6 +122,10 @@ export default class LogIn extends React.Component {
             />
           </View>
         </View>
+        <Loader
+          animationType="fade"
+          visible={loadingVisible}
+         />
       </KeyboardAvoidingView>
     )
   }
@@ -158,6 +169,5 @@ const styles = StyleSheet.create({
   NotificationContainer: {
     position: 'absolute',
     bottom: 0,
-    zIndex: 9
   }
 })
