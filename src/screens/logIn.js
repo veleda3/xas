@@ -39,7 +39,6 @@ export default class LogIn extends React.Component {
       }
 
     }, 2000)
-    console.log(this.state.validEmail)
   }
 
   handleCloseNotification() {
@@ -164,7 +163,7 @@ const styles = StyleSheet.create({
   nextButton: {
     alignItems: 'flex-end',
     right: 20,
-    bottom: 20
+    bottom: 20,
   },
   NotificationContainer: {
     position: 'absolute',
