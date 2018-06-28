@@ -8,13 +8,15 @@ export default class NextButton extends React.Component {
   render() {
     const { disable, icon, handleNextButton } = this.props
     return (
-      <TouchableHighlight
-        onPress={handleNextButton}
-        style={[styles.opacityStyle, styles.button]}
-        disable={disable}
-      >
-        <FontAwesome name="angle-right" size={40} style={styles.buttonIcon} />
-      </TouchableHighlight>
+      <View style={styles.nextButtonContainer}>
+        <TouchableHighlight
+          onPress={handleNextButton}
+          style={[styles.opacityStyle, styles.button]}
+          disable={disable}
+        >
+          <FontAwesome name="angle-right" size={40} style={styles.buttonIcon} />
+        </TouchableHighlight>
+      </View>
     )
   }
 }
@@ -25,6 +27,11 @@ NextButton.propTypes = {
 }
 
 const styles = StyleSheet.create({
+  nextButtonContainer: {
+    alignItems: 'flex-end',
+    right: 20,
+    bottom: 20,
+  },
   button: {
     alignItems: 'center',
     justifyContent: 'center',
