@@ -31,7 +31,6 @@ export default class ForgotPassword extends React.Component {
 
       if(emailCheckRegex.test(email)) {
         this.setState({emailAddress: email, validEmail: true})
-        console.log(this.state.validEmail)
       } else if (!emailCheckRegex.test(email)) {
         this.setState({validEmail: false})
       }
@@ -45,7 +44,6 @@ export default class ForgotPassword extends React.Component {
           this.setState({formValid: false, loadingVisible:false})
 
       } else {
-          console.log(this.state.formValid)
           this.setState({formValid: true, loadingVisible:false})
 
         }
