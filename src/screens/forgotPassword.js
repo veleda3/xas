@@ -15,13 +15,14 @@ export default class ForgotPassword extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      formNotValid: false,
+      formValid: true,
       validEmail: false,
       emailAddress: '',
       loadingVisible: false
     }
     this.handleValidEmail = this.handleValidEmail.bind(this)
     this.handleNextButton = this.handleNextButton.bind(this)
+    this.handleCloseNotification = this.handleCloseNotification.bind(this)
 
   }
   handleValidEmail(email) {
@@ -40,11 +41,11 @@ export default class ForgotPassword extends React.Component {
     this.setState({loadingVisible:true})
     setTimeout(() => {
       if(this.state.emailAddress === "velez@velezda.com") {
-          this.setState({formNotValid: false, loadingVisible:false})
+          this.setState({formValid: false, loadingVisible:false})
 
       } else {
           console.log(this.state.formValid)
-          this.setState({formNotValid: true, loadingVisible:false})
+          this.setState({formValid: true, loadingVisible:false})
 
         }
 
@@ -52,18 +53,20 @@ export default class ForgotPassword extends React.Component {
   }
 
   handleCloseNotification() {
-    this.setState({formNotValid: false })
+    this.setState({formValid: false })
   }
 
   render() {
-    const {validEmail, loadingVisible, formNotValid} = this.state
-    const showNotification = formNotValid ? false : true
-    const backgroundColor = formNotValid ? Colors.red : Colors.facebookBlue
+    const {validEmail, loadingVisible, formValid} = this.state
+    const showNotification = formValid ? false : true
+    const backgroundColor = formValid ? Colors.red : Colors.facebookBlue
     const notificationMarginTop = showNotification ? 10 : 0
     return (
-      <KeyboardAvoidingView style={[{backgroundColor: backgroundColor}, styles.container]}
+      <KeyboardAvoidingView
+      style={[{backgroundColor: backgroundColor}, styles.container]}
       behavior="padding"
       >
+      <View style={styles.scrollViewContainer}>
         <View style={styles.formContainer}>
           <Text style={styles.headerText}>Forgot your Password?</Text>
           <Text style={styles.subHedersText}>Enter your email to find your account</Text>
@@ -82,17 +85,18 @@ export default class ForgotPassword extends React.Component {
          <View style={styles.nextButton}>
           <NextButton
             handleNextButton={this.handleNextButton}
-            />
+          />
          </View>
          <View style={[styles.NotificationContainer, {marginTop: notificationMarginTop}]}>
            <Notification
-             showNotification={formNotValid}
-             handleCloseNotification={this.handleCloseNotification}
-             type="Error"
-             firstLine="It looks like you got the wrong email"
-             secondLine="Please try again"
+           showNotification={formValid}
+           handleCloseNotification={this.handleCloseNotification}
+           type="Error"
+           firstLine="It looks like you got the wrong email"
+           secondLine="Please try again"
            />
          </View>
+        </View>
          <Loader
          visible={loadingVisible}
          animationType="fade"
@@ -112,6 +116,9 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     flex: 1,
+  },
+  scrollViewContainer: {
+    flex: 1
   },
   headerText: {
     fontSize: 28,
