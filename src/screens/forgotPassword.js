@@ -3,6 +3,7 @@ import {
   View,
   Text,
   KeyboardAvoidingView,
+  ScrollView,
   StyleSheet
 } from 'react-native';
 import Colors from '../styles/colors';
@@ -67,7 +68,7 @@ export default class ForgotPassword extends React.Component {
       behavior="padding"
       >
       <View style={styles.scrollViewContainer}>
-        <View style={styles.formContainer}>
+        <ScrollView style={styles.formContainer}>
           <Text style={styles.headerText}>Forgot your Password?</Text>
           <Text style={styles.subHedersText}>Enter your email to find your account</Text>
           <InputField
@@ -75,13 +76,12 @@ export default class ForgotPassword extends React.Component {
             textSize={14}
             textColor={Colors.white}
             textFieldColor={Colors.white}
-            labelText="ENTER EMAIL"
             inputType="email"
             lableTextSize={14}
             onChangeText={this.handleValidEmail}
             showCheckmark={validEmail}
           />
-         </View>
+         </ScrollView>
          <View style={styles.nextButton}>
           <NextButton
             handleNextButton={this.handleNextButton}

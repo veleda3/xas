@@ -74,6 +74,7 @@ export default class InputField extends React.Component {
           secureTextEntry={secureInput}
           onChangeText={onChangeText}
           keyboardType={keyboardType}
+          autoFocus={true}
         />
       </View>
     )
@@ -87,7 +88,9 @@ InputField.propTypes = {
   borderBottomColor: propTypes.string,
   inputType: propTypes.string.isRequired,
   onChangeText: propTypes.func,
-  showCheckmark: propTypes.bool
+  showCheckmark: propTypes.bool,
+  autoFocus: propTypes.bool,
+  autoCapitilized: propTypes.bool
 
 }
 
