@@ -82,11 +82,9 @@ export default class ForgotPassword extends React.Component {
             showCheckmark={validEmail}
           />
          </ScrollView>
-         <View style={styles.nextButton}>
           <NextButton
             handleNextButton={this.handleNextButton}
           />
-         </View>
          <View style={[styles.NotificationContainer, {marginTop: notificationMarginTop}]}>
            <Notification
            showNotification={formValid}
@@ -132,11 +130,6 @@ const styles = StyleSheet.create({
     paddingBottom: 60,
     marginTop: 20,
     marginBottom: 60
-  },
-  nextButton: {
-    alignItems: 'flex-end',
-    right: 20,
-    bottom: 20
   },
   NotificationContainer: {
     position: 'absolute',

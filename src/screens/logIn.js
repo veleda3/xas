@@ -105,12 +105,10 @@ export default class LogIn extends React.Component {
               showCheckmark={validPassword}
              />
           </ScrollView>
-          <View style={styles.nextButton}>
             <NextButton
               handleNextButton={this.handleNextButton}
               disable={this.toggleNextButtonState}
             />
-          </View>
           <View style={[styles.NotificationContainer, {marginTop: notificationMarginTop}]}>
             <Notification
               showNotification={formNotValid}
@@ -159,11 +157,6 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: Colors.white,
     marginBottom: 30
-  },
-  nextButton: {
-    alignItems: 'flex-end',
-    right: 20,
-    bottom: 20,
   },
   NotificationContainer: {
     position: 'absolute',
