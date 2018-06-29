@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView, Image } from 'react-native';
 import propTypes from 'prop-types';
-import Colors from '../styles/colors';
-import { FontAwesome } from '@expo/vector-icons';
+import {connect} from 'react-redux';
+import {bindActionCreator} from 'redux';
+import {ActionCreator} from '../redux/actions';
+import {FontAwesome} from '@expo/vector-icons';
 import InputField from '../components/forms/inputField';
 import NextButton from '../components/buttons/nextButton';
 import Notification from '../components/forms/Notification';
 import Loader from '../components/loader';
+import Colors from '../styles/colors';
 
-export default class LogIn extends React.Component {
+class LogIn extends React.Component {
 
   constructor(props){
     super(props)
@@ -163,3 +166,15 @@ const styles = StyleSheet.create({
     bottom: 0,
   }
 })
+
+const mapStateToProps = (state) => {
+  return {
+    loggedInState: state.loggedInState
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreator(ActionCreator, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

@@ -1,3 +1,5 @@
 export * as LoggedOut from './loggedOut';
 
-export const ActionCreator = Object.assign({}, LoggedOut)
+export const ActionCreator = Object.assign({},
+  LoggedOut
+)

@@ -1,9 +1,10 @@
 import * as types from './types';
+import user from '../../data/user.json'
 
 
 export function LogIn(email, password) {
   return (dispatch, getState) => {
-    if(email === user.email) {
+    if(email === user.email && password === user.password) {
       dispatch(setLoggedInState(true))
       return true
     }
