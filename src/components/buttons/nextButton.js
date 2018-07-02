@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight, StyleSheet } from 'react-native';
+import { View, TouchableHighlight, StyleSheet } from 'react-native';
 import propTypes from 'prop-types';
 import Colors from '../../styles/colors';
 import { FontAwesome } from '@expo/vector-icons';

@@ -29,7 +29,6 @@ export default class Notification extends React.Component {
   render() {
     const {type, firstLine, secondLine, handleCloseNotification, showNotification } = this.props
     const {positionValue} = this.state
-    console.log(showNotification)
     showNotification ? this.animateNofication(0) : this.animateNofication(-60)
     return(
       <Animated.View style={[{marginBottom: positionValue}, styles.container]}>

@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView, Image } from 'react-native';
 import propTypes from 'prop-types';
-import Colors from '../styles/colors';
-import { FontAwesome } from '@expo/vector-icons';
+import {connect} from 'react-redux';
+import {bindActionCreator} from 'redux';
+import * as actions from '../redux/actions';
+import {FontAwesome} from '@expo/vector-icons';
 import InputField from '../components/forms/inputField';
 import NextButton from '../components/buttons/nextButton';
 import Notification from '../components/forms/Notification';
 import Loader from '../components/loader';
+import Colors from '../styles/colors';
 
-export default class LogIn extends React.Component {
+class LogIn extends React.Component {
 
   constructor(props){
     super(props)
@@ -17,7 +20,8 @@ export default class LogIn extends React.Component {
       validEmail: false,
       emailAddress: '',
       validPassword: false,
-      loadingVisible: false
+      loadingVisible: false,
+      password: ''
 
     }
     this.handleCloseNotification = this.handleCloseNotification.bind(this)
@@ -28,17 +32,20 @@ export default class LogIn extends React.Component {
   handleNextButton() {
     //simulating a slow server
     this.setState({loadingVisible:true})
+    const { password, emailAddress } = this.state
+    
     setTimeout(() => {
-      if(this.state.emailAddress === "velez@velezda.com" && this.state.validPassword) {
+      if(this.state.validEmail && this.state.validPassword) {
+        this.props.LogIn(emailAddress, password)
         this.setState({formNotValid: false, loadingVisible:false})
 
       } else {
-        console.log(this.state.formValid)
         this.setState({formNotValid: true, loadingVisible:false})
 
       }
 
     }, 2000)
+
   }
 
   handleCloseNotification() {
@@ -58,7 +65,7 @@ export default class LogIn extends React.Component {
   handlePasswordChange(event) {
     if(!this.state.validPassword) {
       if(event.length > 4) {
-        this.setState({validPassword: true})
+        this.setState({password: event, validPassword: true})
       }
     }
     else if(event.length < 5) {
@@ -163,3 +170,13 @@ const styles = StyleSheet.create({
     bottom: 0,
   }
 })
+
+const mapStateToProps = (state) => {
+  return {
+    loggedInStatus: state.loggedInStatus
+  }
+}
+
+
+
+export default connect(mapStateToProps, actions)(LogIn)
