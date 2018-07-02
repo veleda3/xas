@@ -1,8 +1,10 @@
-import createReducer from '../helpers';
 import * as types from '../actions/types'
 
-export const LoggedOut = createReducer({}, {
-  [types.SET_LOGGED_IN_STATE](state, action) {
-    return action
+export default function (state = {}, action) {
+  switch (action.type) {
+    case types.SET_LOGGED_IN_STATE:
+      return { loggedInStatus: action.payload }
+    default:
+      return { loggedInStatus: null };
   }
-})
+}

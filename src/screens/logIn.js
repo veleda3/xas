@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView, Image } from 
 import propTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreator} from 'redux';
-import {ActionCreator} from '../redux/actions';
+import * as actions from '../redux/actions';
 import {FontAwesome} from '@expo/vector-icons';
 import InputField from '../components/forms/inputField';
 import NextButton from '../components/buttons/nextButton';
@@ -20,7 +20,8 @@ class LogIn extends React.Component {
       validEmail: false,
       emailAddress: '',
       validPassword: false,
-      loadingVisible: false
+      loadingVisible: false,
+      password: ''
 
     }
     this.handleCloseNotification = this.handleCloseNotification.bind(this)
@@ -31,17 +32,20 @@ class LogIn extends React.Component {
   handleNextButton() {
     //simulating a slow server
     this.setState({loadingVisible:true})
+    const { password, emailAddress } = this.state
+    
     setTimeout(() => {
-      if(this.state.emailAddress === "velez@velezda.com" && this.state.validPassword) {
+      if(this.state.validEmail && this.state.validPassword) {
+        this.props.LogIn(emailAddress, password)
         this.setState({formNotValid: false, loadingVisible:false})
 
       } else {
-        console.log(this.state.formValid)
         this.setState({formNotValid: true, loadingVisible:false})
 
       }
 
     }, 2000)
+
   }
 
   handleCloseNotification() {
@@ -61,7 +65,7 @@ class LogIn extends React.Component {
   handlePasswordChange(event) {
     if(!this.state.validPassword) {
       if(event.length > 4) {
-        this.setState({validPassword: true})
+        this.setState({password: event, validPassword: true})
       }
     }
     else if(event.length < 5) {
@@ -169,12 +173,10 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    loggedInState: state.loggedInState
+    loggedInStatus: state.loggedInStatus
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreator(ActionCreator, dispatch)
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
+
+export default connect(mapStateToProps, actions)(LogIn)

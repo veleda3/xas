@@ -16,6 +16,6 @@ export function LogIn(email, password) {
 export function setLoggedInState(loggedInState) {
   return {
     type: types.SET_LOGGED_IN_STATE,
-    action: loggedInState
+    payload: loggedInState
   }
 }
