@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import * as actions from '../redux/actions';
 import Colors from '../styles/colors';
 import RoundedButton from '../components/buttons/roundedButton';
 import { FontAwesome } from '@expo/vector-icons';
 import NavBarButton from '../components/buttons/navBarButton';
 import {transparentHeaderStyle} from '../styles/transparentHeaderStyle';
 
-export default class LoggedOut extends Component {
+
+class LoggedOut extends Component {
 
   static navigationOptions = ({navigation}) => ({
     headerRight: <NavBarButton handleButtomPress={()=> navigation.navigate('LogIn')} location="right" text="Log In" color={Colors.white}/>,
     headerStyle: transparentHeaderStyle,
     headerTintColor: Colors.white
   })
+
+  constructor(props) {
+    super(props)
+    this.onFacebookPress = this.onFacebookPress.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.onAuthComplete(nextProps);
+  }
+
   onFacebookPress() {
-    alert('facebook button pressed')
+
+    this.props.facebookLogIn()
+    this.onAuthComplete(this.props);
   }
 
   onCreateAccount() {
@@ -23,6 +38,12 @@ export default class LoggedOut extends Component {
 
   onGooglePress() {
     alert('Google button pressed')
+  }
+
+  onAuthComplete(props) {
+    if (props.token) {
+      this.props.navigation.navigate('TurnOnNotifications');
+    }
   }
 
   render() {
@@ -39,6 +60,7 @@ export default class LoggedOut extends Component {
           color={Colors.facebookBlue}
           icon={<FontAwesome name="facebook" size={20} style={styles.buttonIcon} />}
           handleOnPress={this.onFacebookPress}
+
           />
           <RoundedButton
           text="Continue with Google"
@@ -130,3 +152,10 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.white,
   }
 });
+
+const mapStateToProps = ({auth}) => {
+  console.log(auth)
+  return {token: auth.token}
+}
+
+export default connect(mapStateToProps, actions)(LoggedOut)
