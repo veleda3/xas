@@ -5,6 +5,10 @@ import RoundedButton from '../components/buttons/roundedButton';
 import { FontAwesome } from '@expo/vector-icons';
 
 export default class LoggedOut extends Component {
+
+  static navigationOptions = {
+    header: null
+  }
   onFacebookPress() {
     alert('facebook button pressed')
   }
@@ -50,24 +54,24 @@ export default class LoggedOut extends Component {
             By tapping Continue, or create account
           </Text>
           <Text style={styles.termsText}> options, </Text>
-           <Text style={styles.termsText}>I agree to Xas </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Terms of Service</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>, </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Payments Terms of Service</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>, </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Privacy Policy</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>, and </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Nondiscrimination Policy</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>.</Text>
-           </View>
+          <Text style={styles.termsText}>I agree to Xas </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Terms of Service</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>, </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Payments Terms of Service</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>, </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Privacy Policy</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>, and </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Nondiscrimination Policy</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>.</Text>
+          </View>
         </View>
       </View>
     );
