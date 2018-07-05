@@ -4,16 +4,21 @@ import Inbox from '../containers/inboxContainer';
 import OrdersBooked from '../containers/ordersBookedContainer';
 import Profile from '../containers/profileContainer';
 import Saved from '../containers/savedContainer';
+import Colors from '../styles/colors'
 
 const LoggedInTabNavigator = TabNavigator({
     Explore: {screen: Explore},
-    Inbox: {screen: Inbox},
+    Saved: {screen: Saved},
     OrdersBooked: {screen: OrdersBooked},
+    Inbox: {screen: Inbox},
     Profile: {screen: Profile},
-    Saved: {screen: Saved}
 }, {
     tabBarOptions: {
-        fontWeight: '600'
+        labelStyle: {
+            fontWeight: '600',
+            marginBottom: 5         
+        },
+        activeTintColor: Colors.pink
     }
 })
 

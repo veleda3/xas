@@ -4,5 +4,6 @@ export default {
   green01: '#008388',
   facebookBlue: '#3B5998',
   red: '#ff0000',
-  lightGray: '#D3D3D3'
+  lightGray: '#D3D3D3',
+  pink: '#fc4c54'
 }

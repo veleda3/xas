@@ -39,11 +39,14 @@ class LogIn extends React.Component {
     //simulating a slow server
     this.setState({loadingVisible:true})
     const { password, emailAddress } = this.state
+    const {navigate} = this.props.navigation
     
     setTimeout(() => {
       if(this.state.validEmail && this.state.validPassword) {
         this.props.LogIn(emailAddress, password)
         this.setState({formNotValid: false, loadingVisible:false})
+        //navigates to logged In tab navigator view if user is validated
+        navigate('LoggedIn') 
 
       } else {
         this.setState({formNotValid: true, loadingVisible:false})
