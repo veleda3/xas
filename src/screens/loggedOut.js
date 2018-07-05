@@ -3,8 +3,16 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import Colors from '../styles/colors';
 import RoundedButton from '../components/buttons/roundedButton';
 import { FontAwesome } from '@expo/vector-icons';
+import NavBarButton from '../components/buttons/navBarButton';
+import {transparentHeaderStyle} from '../styles/transparentHeaderStyle';
 
 export default class LoggedOut extends Component {
+
+  static navigationOptions = ({navigation}) => ({
+    headerRight: <NavBarButton handleButtomPress={()=> navigation.navigate('LogIn')} location="right" text="Log In" color={Colors.white}/>,
+    headerStyle: transparentHeaderStyle,
+    headerTintColor: Colors.white
+  })
   onFacebookPress() {
     alert('facebook button pressed')
   }
@@ -50,24 +58,24 @@ export default class LoggedOut extends Component {
             By tapping Continue, or create account
           </Text>
           <Text style={styles.termsText}> options, </Text>
-           <Text style={styles.termsText}>I agree to Xas </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Terms of Service</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>, </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Payments Terms of Service</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>, </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Privacy Policy</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>, and </Text>
-           <TouchableHighlight style={styles.linkButton}>
-             <Text style={styles.termsText}>Nondiscrimination Policy</Text>
-           </TouchableHighlight>
-           <Text style={styles.termsText}>.</Text>
-           </View>
+          <Text style={styles.termsText}>I agree to Xas </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Terms of Service</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>, </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Payments Terms of Service</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>, </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Privacy Policy</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>, and </Text>
+          <TouchableHighlight style={styles.linkButton}>
+            <Text style={styles.termsText}>Nondiscrimination Policy</Text>
+          </TouchableHighlight>
+          <Text style={styles.termsText}>.</Text>
+          </View>
         </View>
       </View>
     );

@@ -10,8 +10,14 @@ import NextButton from '../components/buttons/nextButton';
 import Notification from '../components/forms/Notification';
 import Loader from '../components/loader';
 import Colors from '../styles/colors';
+import {transparentHeaderStyle} from '../styles/transparentHeaderStyle';
 
 class LogIn extends React.Component {
+
+  static navigationOptions = ({navigation}) => ({
+    headerStyle: transparentHeaderStyle,
+    headerTintColor: Colors.white
+  })
 
   constructor(props){
     super(props)
