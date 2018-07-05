@@ -1,6 +1,6 @@
 import {AppNavigator} from '../../navigators/AppNavigator';
 
-const firstAction = AppNavigator.router.getActionForPathAndParams('LoggedOut')
+const firstAction = AppNavigator.router.getActionForPathAndParams('LoggedIn')
 const initialNavState = AppNavigator.router.getStateForAction(firstAction)
 
 export const nav = (state = initialNavState, action) => {
