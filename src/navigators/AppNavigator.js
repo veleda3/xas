@@ -5,11 +5,13 @@ import {addNavigationHelpers, StackNavigator} from 'react-navigation';
 import LogIn from '../screens/logIn';
 import LoggedOut from '../screens/loggedOut';
 import ForgotPassword from '../screens/forgotPassword';
+import LoggedIn from '../screens/loggedIn';
 
 export const AppNavigator = StackNavigator({
     LogIn: {screen: LogIn},
     LoggedOut: {screen: LoggedOut},
     ForgotPassword: {screen: ForgotPassword},
+    LoggedIn: {screen: LoggedIn}
 })
 
 const AppNavigatorWithState = ({dispatch, nav, listener}) => (
