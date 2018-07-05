@@ -42,11 +42,10 @@ class LogIn extends React.Component {
     const {navigate} = this.props.navigation
     
     setTimeout(() => {
-      if(this.state.validEmail && this.state.validPassword) {
-        this.props.LogIn(emailAddress, password)
+      if(this.props.LogIn(emailAddress, password)) {
         this.setState({formNotValid: false, loadingVisible:false})
         //navigates to logged In tab navigator view if user is validated
-        navigate('LoggedIn') 
+        navigate('TurnOnNotifications') 
 
       } else {
         this.setState({formNotValid: true, loadingVisible:false})
