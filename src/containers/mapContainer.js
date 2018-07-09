@@ -6,7 +6,6 @@ import RoundedButton from '../components/buttons/roundedButton'
 import Colors from '../styles/colors'
 
 export default class Map extends React.Component {
-    watchID: ?number = null;
 
     static navigationOptions = {
         tabBarLabel: 'MAP',
@@ -89,17 +88,6 @@ export default class Map extends React.Component {
                     showsUserLocation={true}
                     followUserLocation={true}
                 >
-                    <MapView.Marker
-                        coordinate={{
-                        latitude: (this.state.lastLat + 0.00050) || -36.82339,
-                        longitude: (this.state.lastLong + 0.00050) || -73.03569,
-                    }}>
-                        <View>
-                            <Text style={{color: '#000'}}>
-                                cordinates of where you moving { this.state.lastLong } / { this.state.lastLat }
-                            </Text>
-                        </View>
-                    </MapView.Marker>
                 </MapView>
                 <RoundedButton
                     text="Search for your chef!"
