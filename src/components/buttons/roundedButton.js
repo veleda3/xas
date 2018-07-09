@@ -8,7 +8,7 @@ export default class RoundedButton extends React.Component {
 
 
   render() {
-    const { text, backgroundColor, color, icon, handleOnPress } = this.props;
+    const { text, backgroundColor, color, icon, handleOnPress, authComplete } = this.props;
 
 
     return (

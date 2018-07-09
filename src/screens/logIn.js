@@ -118,7 +118,7 @@ class LogIn extends React.Component {
               inputType="password"
               onChangeText={this.handlePasswordChange}
               showCheckmark={validPassword}
-             />
+            />
           </ScrollView>
             <NextButton
               handleNextButton={this.handleNextButton}
@@ -137,7 +137,7 @@ class LogIn extends React.Component {
         <Loader
           animationType="fade"
           visible={loadingVisible}
-         />
+        />
       </KeyboardAvoidingView>
     )
   }
