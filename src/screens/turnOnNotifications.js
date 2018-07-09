@@ -85,38 +85,37 @@ const styles = StyleSheet.create({
         marginTop: 80,
         paddingLeft: 20,
         paddingRight: 20
-   },
-   icon: {
-       color: Colors.green01,
-       marginBottom: 15
-   },
-   headerText: {
-       fontSize: 28,
-       fontWeight: '600'
+    },
+    icon: {
+        color: Colors.green01,
+        marginBottom: 15
+    },
+    headerText: {
+        fontSize: 28,
+        fontWeight: '600'
 
-   },
-   messageContainer: {
-       flexWrap: 'wrap',
-       flexDirection: 'row',
-       marginTop: 15
-   },
-   messageText: {
-       fontSize: 16
-   },
-   yesButton: {
-       backgroundColor: Colors.green01,
-       marginTop: 50,
-       borderRadius: 5,
-       padding: 10,
-       width: 160,
-       alignItems: 'center'
-
-   },
-   yesButtonText: {
-       color: Colors.white,
-       fontWeight: '600',
-       fontSize: 20
-   },
+    },
+    messageContainer: {
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        marginTop: 15
+    },
+    messageText: {
+        fontSize: 16
+    },
+    yesButton: {
+        backgroundColor: Colors.green01,
+        marginTop: 50,
+        borderRadius: 5,
+        padding: 10,
+        width: 160,
+        alignItems: 'center'
+    },
+    yesButtonText: {
+        color: Colors.white,
+        fontWeight: '600',
+        fontSize: 20
+    },
 
 
     skipButton: {

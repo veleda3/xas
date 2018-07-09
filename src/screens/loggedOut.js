@@ -154,7 +154,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({auth}) => {
-  console.log(auth)
   return {token: auth.token}
 }
 
