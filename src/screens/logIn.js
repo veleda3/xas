@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreator} from 'redux';
 import * as actions from '../redux/actions';
 import {FontAwesome} from '@expo/vector-icons';
+import NavBarButton from '../components/buttons/navBarButton';
 import InputField from '../components/forms/inputField';
 import NextButton from '../components/buttons/nextButton';
 import Notification from '../components/forms/Notification';
@@ -15,6 +16,17 @@ import {transparentHeaderStyle} from '../styles/transparentHeaderStyle';
 class LogIn extends React.Component {
 
   static navigationOptions = ({navigation}) => ({
+    headerRight: <NavBarButton
+      handleButtonPress={() => navigation.navigate('ForgotPassword')}
+      location="right"
+      color={Colors.white}
+      text="Forgot Password"
+    />,
+    headerLeft: <NavBarButton
+    handleButtonPress={() => navigation.goBack()}
+    location="left"
+    icon={<FontAwesome name="angle-left" color={Colors.white} size={30} />}
+  />,
     headerStyle: transparentHeaderStyle,
     headerTintColor: Colors.white
   })

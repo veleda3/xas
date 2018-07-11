@@ -11,8 +11,15 @@ import NextButton from '../components/buttons/nextButton';
 import InputField from '../components/forms/inputField';
 import Notification from '../components/forms/Notification';
 import Loader from '../components/loader'
+import { transparentHeaderStyle } from '../styles/transparentHeaderStyle';
 
 export default class ForgotPassword extends React.Component {
+
+  static navigationOptions = ({navigation}) => ({
+    headerStyle: transparentHeaderStyle,
+    headerTintColor: Colors.white
+  })
+  
   constructor(props){
     super(props)
     this.state = {
@@ -79,25 +86,25 @@ export default class ForgotPassword extends React.Component {
             onChangeText={this.handleValidEmail}
             showCheckmark={validEmail}
           />
-         </ScrollView>
+        </ScrollView>
           <NextButton
             handleNextButton={this.handleNextButton}
           />
-         <View style={[styles.NotificationContainer, {marginTop: notificationMarginTop}]}>
-           <Notification
-           showNotification={formValid}
-           handleCloseNotification={this.handleCloseNotification}
-           type="Error"
-           firstLine="It looks like you got the wrong email"
-           secondLine="Please try again"
-           />
-         </View>
-        </View>
-         <Loader
-         visible={loadingVisible}
-         animationType="fade"
+        <View style={[styles.NotificationContainer, {marginTop: notificationMarginTop}]}>
+          <Notification
+          showNotification={formValid}
+          handleCloseNotification={this.handleCloseNotification}
+          type="Error"
+          firstLine="It looks like you got the wrong email"
+          secondLine="Please try again"
           />
-       </KeyboardAvoidingView>
+        </View>
+        </View>
+        <Loader
+        visible={loadingVisible}
+        animationType="fade"
+          />
+      </KeyboardAvoidingView>
     )
   }
 }

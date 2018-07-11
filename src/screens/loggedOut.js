@@ -12,7 +12,7 @@ import {transparentHeaderStyle} from '../styles/transparentHeaderStyle';
 class LoggedOut extends Component {
 
   static navigationOptions = ({navigation}) => ({
-    headerRight: <NavBarButton handleButtomPress={()=> navigation.navigate('LogIn')} location="right" text="Log In" color={Colors.white}/>,
+    headerRight: <NavBarButton handleButtonPress={()=> navigation.navigate('LogIn')} location="right" text="Log In" color={Colors.white}/>,
     headerStyle: transparentHeaderStyle,
     headerTintColor: Colors.white
   })
