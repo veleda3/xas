@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Colors from '../../styles/colors';
 import { FontAwesome } from '@expo/vector-icons';
+import Stars from '../stars'
 
 
 export default class Listings extends React.Component {
@@ -55,6 +56,12 @@ export default class Listings extends React.Component {
                         {upperCaseType}
                         </Text>
                         <Text style={styles.listingTitle}>{listing.title}</Text>
+                        <Stars
+                            stars={listing.stars}
+                            votes={listing.votes}
+                            color={Colors.red}
+                            size={14}
+                        />
                     </View>
                 </TouchableHighlight>
             )

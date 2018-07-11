@@ -11,6 +11,7 @@ const FoodListings = [
                 title: 'Mexican Tamales on the go!',
                 price: 60,
                 priceType: 'per Order',
+                votes: 45,
                 stars: '4.8',
                 region: {
                     adresss: '15 main st',
@@ -26,6 +27,7 @@ const FoodListings = [
                 title: 'Colombian Hot dog',
                 price: 30,
                 priceType: 'per Order',
+                votes: 32,
                 stars: '4.5',
                 region: {
                     adresss: '15 main st',
@@ -41,7 +43,8 @@ const FoodListings = [
                 title: 'Brazilian dffvfdfdvf vdvdsf',
                 price: 40,
                 priceType: 'per Order',
-                stars: '4.9',
+                votes: 5,
+                stars: '3.9',
                 region: {
                     adresss: '15 main st',
                     city: 'Boston',
@@ -56,6 +59,7 @@ const FoodListings = [
                 title: 'jhvbadhlfv jdbhadflbva!',
                 price: 45,
                 priceType: 'per Order',
+                votes: 5,
                 stars: '4.7',
                 region: {
                     adresss: '15 main st',
@@ -78,6 +82,7 @@ const FoodListings = [
                 title: 'vdfvfgf vdfjvnjdfvn fdvs!',
                 price: 30,
                 priceType: 'per Order',
+                votes: 47,
                 stars: '4.8',
                 region: {
                     adresss: '15 main st',
@@ -93,6 +98,7 @@ const FoodListings = [
                 title: 'Cfdvvs vgvrstbb rbrsbgsbbgrsbg',
                 price: 30,
                 priceType: 'per Order',
+                votes: 8,
                 stars: '4.5',
                 region: {
                     adresss: '15 main st',
@@ -108,6 +114,7 @@ const FoodListings = [
                 title: 'jnajv kjnfaebh ejaknjkv',
                 price: 40,
                 priceType: 'per Order',
+                votes: 9,
                 stars: '4.9',
                 region: {
                     adresss: '15 main st',
@@ -123,6 +130,7 @@ const FoodListings = [
                 title: 'jhvbadhlfv jdbhadflbva!',
                 price: 25,
                 priceType: 'per Order',
+                votes: 2,
                 stars: '4.7',
                 region: {
                     adresss: '15 main st',
@@ -146,7 +154,8 @@ const FoodListings = [
                 title: 'vdfvfgf vdfjvnjdfvn fdvs!',
                 price: 30,
                 priceType: 'per Order',
-                stars: '4.8',
+                votes: 0,
+                stars: '0',
                 region: {
                     adresss: '15 main st',
                     city: 'Boston',
@@ -161,6 +170,7 @@ const FoodListings = [
                 title: 'Cfdvvs vgvrstbb rbrsbgsbbgrsbg',
                 price: 30,
                 priceType: 'per Order',
+                votes: 25,
                 stars: '4.5',
                 region: {
                     adresss: '15 main st',
@@ -176,6 +186,7 @@ const FoodListings = [
                 title: 'jnajv kjnfaebh ejaknjkv',
                 price: 40,
                 priceType: 'per Order',
+                votes: 55,
                 stars: '4.9',
                 region: {
                     adresss: '15 main st',
@@ -191,6 +202,7 @@ const FoodListings = [
                 title: 'jhvbadhlfv jdbhadflbva!',
                 price: 25,
                 priceType: 'per Order',
+                votes: 31,
                 stars: '4.7',
                 region: {
                     adresss: '15 main st',
@@ -214,6 +226,7 @@ const FoodListings = [
                 title: 'vdfvfgf vdfjvnjdfvn fdvs!',
                 price: 30,
                 priceType: 'per Order',
+                votes: 22,
                 stars: '4.8',
                 region: {
                     adresss: '15 main st',
@@ -229,6 +242,7 @@ const FoodListings = [
                 title: 'Cfdvvs vgvrstbb rbrsbgsbbgrsbg',
                 price: 30,
                 priceType: 'per Order',
+                votes: 15,
                 stars: '4.5',
                 region: {
                     adresss: '15 main st',
@@ -244,7 +258,8 @@ const FoodListings = [
                 title: 'jnajv kjnfaebh ejaknjkv',
                 price: 40,
                 priceType: 'per Order',
-                stars: '4.9',
+                votes: 4,
+                stars: '4.0',
                 region: {
                     adresss: '15 main st',
                     city: 'Boston',
@@ -259,6 +274,7 @@ const FoodListings = [
                 title: 'jhvbadhlfv jdbhadflbva!',
                 price: 25,
                 priceType: 'per Order',
+                votes: 81,
                 stars: '4.7',
                 region: {
                     adresss: '15 main st',
