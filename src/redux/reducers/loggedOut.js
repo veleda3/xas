@@ -7,6 +7,6 @@ export default function (state = {}, action) {
     case types.FACEBOOK_LOGIN_FAIL:
       return { token: null };
     default:
-      return { loggedInStatus: null };
+      return state;
   } 
 }

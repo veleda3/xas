@@ -7,14 +7,14 @@ export default class LoggedIn extends React.Component {
         headerLeft: null,
         headerStyle: transparentHeaderStyle,
         gestureEnable: false,
-    }) 
+     }) 
 
     constructor(props)  {
         super(props);
     }
     render() {
         return (
-            <LoggedInTabNavigator />
+            <LoggedInTabNavigator screenProps={{ rootNavigation: this.props.navigation }} />
         )
     }
 }
