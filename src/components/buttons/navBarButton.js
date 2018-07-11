@@ -5,7 +5,7 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class NavBarButton extends React.Component {
     render() {
-        const {location, text, icon, color, handleButtomPress} = this.props
+        const {location, text, icon, color, handleButtonPress} = this.props
         marginPosition = location === 'right' ? {marginRight: 20} : {marginLeft: 20}
         let content;
         if (text) {
@@ -14,7 +14,7 @@ export default class NavBarButton extends React.Component {
            content = <View>{icon}</View>
         }
         return (
-            <TouchableOpacity onPress={handleButtomPress}>
+            <TouchableOpacity onPress={handleButtonPress}>
                 {content}
             </TouchableOpacity>
         )
@@ -25,7 +25,7 @@ NavBarButton.propTypes = {
     location: propTypes.string,
     text: propTypes.string,
     icon: propTypes.object,
-    handleButtomPress: propTypes.func.isRequired
+    handleButtonPress: propTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
