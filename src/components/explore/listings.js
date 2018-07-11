@@ -56,6 +56,7 @@ export default class Listings extends React.Component {
                         {upperCaseType}
                         </Text>
                         <Text style={styles.listingTitle}>{listing.title}</Text>
+                        <Text style={styles.priceItemText}>${listing.price} per order</Text>
                         <Stars
                             stars={listing.stars}
                             votes={listing.votes}
@@ -132,9 +133,6 @@ const styles = StyleSheet.create({
         minHeight: 100,
         borderRadius: 4,
     },
-    cardContent: {
-
-    },
     photo: {
         width: undefined,
         flex: 1,
@@ -146,7 +144,13 @@ const styles = StyleSheet.create({
         fontWeight: '500',
     },
     listingTitle: {
-       fontWeight: '300',
-       color: Colors.darkGray
+        fontWeight: '300',
+        color: Colors.darkGray,
+        fontSize: 14
+    },
+    priceItemText: {
+        fontSize: 12,
+        fontWeight: '300',
+        color: Colors.darkGray
     }
 })
