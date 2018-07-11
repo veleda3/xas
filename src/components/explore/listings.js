@@ -15,10 +15,29 @@ import { FontAwesome } from '@expo/vector-icons';
 
 export default class Listings extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.renderListing = this.renderListing.bind(this)
+    }
+
+    get randomColor() {
+        const colors = [
+            Colors.darkGray,
+            Colors.darkOrange,
+            Colors.green01,
+            Colors.red,
+            Colors.facebookBlue,
+            Colors.pink,
+            Colors.brown
+        ]
+        return colors[Math.floor(Math.random() * colors.length)]
+    }
+
     renderListing(){
         const {listings} = this.props
         
         return listings.map((listing, index) => {
+            const upperCaseType = listing.type.toUpperCase()
             return(
                 <TouchableHighlight 
                 key={`listing-touchable-${index}`} 
@@ -26,11 +45,16 @@ export default class Listings extends React.Component {
                     <View key={`listing-item-${index}`}>
                         <Image
                             source={listing.photo}
-                            resizeMode="contain"
+                            resizeMode="stretch"
                             style={styles.photo}
                         />
-                        <Text>{listing.type}</Text>
-                        <Text>{listing.title}</Text>
+                        <Text
+                        style={[{color: this.randomColor}, styles.listingType]}
+                        numberOfLines={2}
+                        >
+                        {upperCaseType}
+                        </Text>
+                        <Text style={styles.listingTitle}>{listing.title}</Text>
                     </View>
                 </TouchableHighlight>
             )
@@ -38,11 +62,12 @@ export default class Listings extends React.Component {
     }
 
     render() {
-        const {category} = this.props
+        const {category, boldTitle} = this.props
+        const headingStyle = boldTitle ? {fontSize: 22, fontWeight: '600'} : {fontSize: 18}
         return(
             <View style={styles.container}>
                 <View style={styles.headingContainer}>
-                    <Text style={styles.heading}>{category}</Text>
+                    <Text style={[headingStyle, styles.heading]}>{category}</Text>
                     <TouchableOpacity style={styles.seeAllBtns}>
                         <Text style={styles.seeAllBtnsText}>see all </Text>
                         <FontAwesome name="angle-right" size={18} color={Colors.darkGray} />
@@ -89,14 +114,16 @@ const styles = StyleSheet.create({
     },
     ScrollView: {
         marginTop: 20,
-        marginLeft: 15
+        marginLeft: 10,
+        marginBottom: 40
     },
     card: {
-        marginRight: 6,
-        marginLeft: 5,
-        width: 160,
+        marginRight: 3,
+        marginLeft: 2,
+        width: 140,
         flexDirection: 'column',
-        minHeight: 100
+        minHeight: 100,
+        borderRadius: 4,
     },
     cardContent: {
 
@@ -106,6 +133,13 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 100,
         borderRadius: 3,
-        marginBottom: 2
+        marginBottom: 2,
+    },
+    listingType: {
+        fontWeight: '500',
+    },
+    listingTitle: {
+       fontWeight: '300',
+       color: Colors.darkGray
     }
 })

@@ -67,7 +67,7 @@ const FoodListings = [
         ]
     },
     {
-        category: 'asian',
+        category: 'Asian',
         boldTitle: false,
         showAddToFav: true,
         listings: [
@@ -186,6 +186,74 @@ const FoodListings = [
             },
             {
                 id: 12,
+                photo: require('../img/food12.jpg'),
+                type: 'no meat',
+                title: 'jhvbadhlfv jdbhadflbva!',
+                price: 25,
+                priceType: 'per Order',
+                stars: '4.7',
+                region: {
+                    adresss: '15 main st',
+                    city: 'Boston',
+                    state: 'MA',
+                    zip: '02110'
+                } 
+            },
+
+        ]
+    },
+    {
+        category: 'Popular Reservations',
+        boldTitle: true,
+        showAddToFav: true,
+        listings: [
+            {
+                id: 13,
+                photo: require('../img/food9.jpg'),
+                type: 'no meat',
+                title: 'vdfvfgf vdfjvnjdfvn fdvs!',
+                price: 30,
+                priceType: 'per Order',
+                stars: '4.8',
+                region: {
+                    adresss: '15 main st',
+                    city: 'Boston',
+                    state: 'MA',
+                    zip: '02110'
+                } 
+            },
+            {
+                id: 14,
+                photo: require('../img/food10.jpg'),
+                type: 'no meat',
+                title: 'Cfdvvs vgvrstbb rbrsbgsbbgrsbg',
+                price: 30,
+                priceType: 'per Order',
+                stars: '4.5',
+                region: {
+                    adresss: '15 main st',
+                    city: 'Boston',
+                    state: 'MA',
+                    zip: '02110'
+                } 
+            },
+            {
+                id: 15,
+                photo: require('../img/food11.jpg'),
+                type: 'no meat',
+                title: 'jnajv kjnfaebh ejaknjkv',
+                price: 40,
+                priceType: 'per Order',
+                stars: '4.9',
+                region: {
+                    adresss: '15 main st',
+                    city: 'Boston',
+                    state: 'MA',
+                    zip: '02110'
+                } 
+            },
+            {
+                id: 16,
                 photo: require('../img/food12.jpg'),
                 type: 'no meat',
                 title: 'jhvbadhlfv jdbhadflbva!',

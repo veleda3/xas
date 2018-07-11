@@ -5,5 +5,8 @@ export default {
   facebookBlue: '#3B5998',
   red: '#ff0000',
   lightGray: '#D3D3D3',
-  pink: '#fc4c54'
+  pink: '#fc4c54',
+  darkGray: '#484848',
+  brown: '#ad8763',
+  darkOrange: '#d93900'
 }
