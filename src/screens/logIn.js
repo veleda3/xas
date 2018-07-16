@@ -22,11 +22,6 @@ class LogIn extends React.Component {
       color={Colors.white}
       text="Forgot Password"
     />,
-    headerLeft: <NavBarButton
-    handleButtonPress={() => navigation.goBack()}
-    location="left"
-    icon={<FontAwesome name="angle-left" color={Colors.white} size={30} />}
-  />,
     headerStyle: transparentHeaderStyle,
     headerTintColor: Colors.white
   })

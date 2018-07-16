@@ -1,4 +1,5 @@
 import {AppNavigator} from '../../navigators/AppNavigator';
+import {StatusBar} from 'react-native';
 
 const firstAction = AppNavigator.router.getActionForPathAndParams('LoggedOut')
 const initialNavState = AppNavigator.router.getStateForAction(firstAction)

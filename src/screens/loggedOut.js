@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight, StatusBar } from 'react-native';
 import * as actions from '../redux/actions';
 import Colors from '../styles/colors';
 import RoundedButton from '../components/buttons/roundedButton';
@@ -47,6 +47,7 @@ class LoggedOut extends Component {
   }
 
   render() {
+    StatusBar.setBarStyle('light-content', true)
     return (
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>

@@ -22,5 +22,5 @@ const LoggedInTabNavigator = TabNavigator({
         activeTintColor: Colors.pink
     }
 })
-console.log(LoggedInTabNavigator.propTypes)
+
 export default LoggedInTabNavigator
