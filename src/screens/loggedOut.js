@@ -7,6 +7,16 @@ import RoundedButton from '../components/buttons/roundedButton';
 import { FontAwesome } from '@expo/vector-icons';
 import NavBarButton from '../components/buttons/navBarButton';
 import {transparentHeaderStyle} from '../styles/transparentHeaderStyle';
+import iPhoneSize from '../helpers/utils'
+
+const size = iPhoneSize()
+let termTextSize = 12
+let headingTextSize = 30
+
+if (size === 'small') {
+  termTextSize = 10
+  headingTextSize = 26
+}
 
 
 class LoggedOut extends Component {
@@ -20,6 +30,7 @@ class LoggedOut extends Component {
   constructor(props) {
     super(props)
     this.onFacebookPress = this.onFacebookPress.bind(this)
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -124,7 +135,7 @@ const styles = StyleSheet.create({
     padding: 20
   },
   welcomeText: {
-    fontSize: 30,
+    fontSize: headingTextSize,
     color: Colors.white,
     fontWeight: '300',
     marginBottom: 50
@@ -145,7 +156,7 @@ const styles = StyleSheet.create({
   },
   termsText: {
     color: Colors.white,
-    fontSize: 12,
+    fontSize: termTextSize,
     fontWeight: '600',
   },
   linkButton: {

@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
 import { MapView } from 'expo';
 import {Ionicons, FontAwesome} from '@expo/vector-icons';
+import { Button } from 'react-native-elements';
 import RoundedButton from '../components/buttons/roundedButton'
 import Colors from '../styles/colors'
 
@@ -88,14 +89,19 @@ export default class Map extends React.Component {
                     showsUserLocation={true}
                     followUserLocation={true}
                 >
+
                 </MapView>
-                <RoundedButton
-                    text="Search for your chef!"
-                    backgroundColor={Colors.white}
-                    color={Colors.red}
-                    icon={<FontAwesome name="search" size={20} style={styles.buttonIcon} />}
-                    handleOnPress={this.onButtonPress}
-                />
+                <View style={styles.ButtonContainer}>
+                        <Button
+                            borderRadius={10}
+                            large
+                            title="Search for your chef!"
+                            backgroundColor={Colors.red}
+                            icon={{ name: 'search' }}
+                            onPress={this.onButtonPress}
+                        />
+                    </View>
+                
             </View>
 
         )
@@ -125,5 +131,11 @@ const styles = StyleSheet.create({
         position: 'relative',
         left: 20,
         zIndex: 8,
-      }
+    },
+    ButtonContainer: {
+        position: 'absolute',
+        bottom: 20,
+        left: 0,
+        right: 0
+    }
 })

@@ -4,8 +4,8 @@ import propTypes from 'prop-types';
 import Colors from '../../styles/colors';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default class RoundedButton extends React.Component {
 
+export default class RoundedButton extends React.Component { 
 
   render() {
     const { text, backgroundColor, color, icon, handleOnPress, authComplete } = this.props;
