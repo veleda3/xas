@@ -2,7 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 import Colors from '../../styles/colors';
-import { View, Text, TouchableOpacity, StyleSheet, Easing, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Easing, Animated, Dimensions } from 'react-native';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 export default class Notification extends React.Component {
   constructor(props) {
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
     height: 60,
-    width: '100%',
+    width: SCREEN_WIDTH,
     padding: 10
   },
   notificationContent: {

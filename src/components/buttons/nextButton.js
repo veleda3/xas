@@ -3,8 +3,15 @@ import { View, TouchableHighlight, StyleSheet } from 'react-native';
 import propTypes from 'prop-types';
 import Colors from '../../styles/colors';
 import { FontAwesome } from '@expo/vector-icons';
+import iPhoneSize from '../../helpers/utils'
 
+const size = iPhoneSize()
+let bottomSize = 50
+if (size === 'small') {
+  bottomSize = 45
+}
 export default class NextButton extends React.Component {
+
   render() {
     const { disable, icon, handleNextButton } = this.props
     return (
@@ -36,8 +43,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
-    width: 50,
-    height: 50
+    width: bottomSize,
+    height: bottomSize
   },
   buttonIcon: {
     marginRight: -2,
