@@ -36,7 +36,6 @@ export default class Explore extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <SearchBar />
                 <ScrollView 
                 style={styles.scrollView}
                 contentContainerStyle={styles.scrollViewContent}

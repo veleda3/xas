@@ -3,14 +3,13 @@ import  Explore from '../containers/exploreContainer';
 import Map from '../containers/mapContainer';
 import OrdersBooked from '../containers/ordersBookedContainer';
 import Profile from '../containers/profileContainer';
-import Saved from '../containers/savedContainer';
-import LoggedOut from '../screens/loggedOut'
+import InboxIndex from '../containers/Inbox';
 import Colors from '../styles/colors'
 
 const LoggedInTabNavigator = TabNavigator({
     Map: {screen: Map},
     Explore: {screen: Explore},
-    Saved: {screen: Saved},
+    InboxIndex: {screen: InboxIndex},
     OrdersBooked: {screen: OrdersBooked},
     Profile: {screen: Profile},
 }, {
