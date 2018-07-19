@@ -8,5 +8,6 @@ export default {
   pink: '#fc4c54',
   darkGray: '#484848',
   brown: '#ad8763',
-  darkOrange: '#d93900'
+  darkOrange: '#d93900',
+  txtDark: '#484848',
 }
