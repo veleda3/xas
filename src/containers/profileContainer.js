@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     },
     header: {
         marginTop: 40,
-        marginBottom: 20
+        marginBottom: 20,
     },
     userInfoHolder: {
         flexDirection: 'row',

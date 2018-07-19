@@ -17,6 +17,7 @@ export default class Inbox extends React.Component {
             Data: inboxData
         }
         this.onPressAlerts = this.onPressAlerts.bind(this)
+        this._onPressRow = this._onPressRow.bind(this)
     }
 
     onPressAlerts() {
@@ -48,7 +49,7 @@ export default class Inbox extends React.Component {
     }
 
     _onPressRow() {
-        alert('this row has been pressed')
+        this.props.navigation.navigate('Chat')
     }
 
     render() {
@@ -103,21 +104,20 @@ const styles = StyleSheet.create({
     },
     flatListHeader: {
         paddingBottom: 30,
-        paddingTop: 15
-    },
-    header: {
-        paddingBottom: 30,
-        paddingTop: 15
+        paddingTop: 15,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     screenTitle: {
-        fontWeight: '700'
+        fontWeight: '700',
+        color: Colors.darkGray
     },
     row: {
         flexDirection: 'row',
         paddingVertical: 20,
         alignItems: 'center',
         borderBottomWidth: StyleSheet.hairlineWidth,
-        borderColor: Colors.txtDark
+        borderColor: Colors.darkGray
     },
     avatar: {
         width: 50,
@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
     },
     username: {
         fontWeight: '700',
-        marginRight: 10
+        marginRight: 10,
+        color: Colors.darkGray
     },
     dataTime: {
         fontWeight: '300'
