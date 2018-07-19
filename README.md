@@ -9,13 +9,17 @@ Home cooked meals mobile app using React Native & Redux. No backend integration 
     <td><img src="./screenshots/welcome.PNG" width="200"></td>
     <td><img src="./screenshots/login.PNG" width="200"></td>
     <td><img src="./screenshots/loginError.PNG" width="200"></td>
-    <td><img src="./screenshots/maps.PNG" width="200"></td>
+    <td><img src="./screenshots/maps.jpeg" width="200"></td>
   <tr>
   <tr>
     <td><img src="./screenshots/notifications.PNG" width="200"></td>
     <td><img src="./screenshots/explore.PNG" width="200"></td>
     <td><img src="./screenshots/forgotPassword.PNG" width="200"></td>
     <td><img src="./screenshots/forgotPasswordError.PNG" width="200"></td>
+  <tr>
+    <tr>
+    <td><img src="./screenshots/profile.jpeg" width="200"></td>
+    <td><img src="./screenshots/inbox.jpeg" width="200"></td>
   <tr>
 </table>
 
