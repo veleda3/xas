@@ -18,7 +18,7 @@ Home cooked meals mobile app using React Native & Redux. No backend integration 
     <td><img src="./screenshots/forgotPasswordError.PNG" width="200"></td>
   <tr>
     <tr>
-    <td><img src="./screenshots/profile.jpeg" width="200"></td>
+    <td><img src="./screenshots/profile.png" width="200"></td>
     <td><img src="./screenshots/inbox.jpeg" width="200"></td>
   <tr>
 </table>
