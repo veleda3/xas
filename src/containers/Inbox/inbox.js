@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, FlatList, TouchableOpacity, Image} from 'react-native';
 import inboxData from '../../data/InboxData'
+import {getChats} from '../../services/api'
 import {SimpleLineIcons} from '@expo/vector-icons';
 import Maincontainer from '../../components/mainContainer'
 import Text from '../../components/forms/Text'
@@ -14,10 +15,16 @@ export default class Inbox extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            Data: inboxData
+            Data: [],
         }
         this.onPressAlerts = this.onPressAlerts.bind(this)
         this._onPressRow = this._onPressRow.bind(this)
+    }
+
+    componentDidMount() {
+        getChats().then(chat => this.setState({
+            Data: chat
+        }))
     }
 
     onPressAlerts() {
