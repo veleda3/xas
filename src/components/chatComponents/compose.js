@@ -13,7 +13,7 @@ export default class Compose extends React.Component {
     }
 
     onSubmit() {
-        this.props.postMessage(this.state.text)
+        this.props.submit(this.state.text)
         this.setState({
             text: ''
         })
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     constainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItem: 'center',
+        alignItems: 'center',
         margin: 10
 
     },

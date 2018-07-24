@@ -13,16 +13,16 @@ export const getChats = () => (
 export const initApi = () => initialize();
 
 
-export const getMessages = (updaterFn) => setListener('messeges', (snapshot) => {
-    if(snapshot) {
-        updaterFn(snapshot)
+export const getMessages = (updaterFn) => setListener('messages', (snapshot) => {
+    if (snapshot){
+      updaterFn(snapshot);
     }
-})
+  });
 
 export const pushMessage = (message) => {
-    if(Boolean(messege)) {
+    if(Boolean(message)) {
         return pushData('messeges', {
-            urder_id: USER_ID,
+            user_id: USER_ID,
             message
         })
     }
