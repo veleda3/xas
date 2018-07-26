@@ -14,9 +14,11 @@ export const initApi = () => initialize();
 
 
 export const getMessages = (updaterFn) => setListener('messages', (snapshot) => {
+    console.log(snapshot)
     if (snapshot){
       updaterFn(snapshot);
     }
+    
   });
 
 export const pushMessage = (message) => {

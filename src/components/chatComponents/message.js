@@ -5,7 +5,8 @@ import Text from '../forms/Text'
 import Colors from '../../styles/colors'
 import {USER_ID} from '../../services/api'
 
-export const message = ({item}) => {
+export const message = (item) => {
+    console.log(item)
     const incoming = item.userId !== USER_ID
     return (
         <Animatable.View>
