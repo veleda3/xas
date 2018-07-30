@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {MaterialIcons} from '@expo/vector-icons';
 import StackInbox from '../../navigators/InboxNavigator';
+import {initApi} from '../../services/api'
 
 export default class InboxIndex extends React.Component {
     static navigationOptions = {
@@ -14,6 +15,10 @@ export default class InboxIndex extends React.Component {
             />
         )
     }
+    componentDidMount() {
+        initApi()
+    }
+
     render() {
         return (
             <StackInbox screenProps={{ rootNavigation: this.props.navigation }} />

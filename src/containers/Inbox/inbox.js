@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, FlatList, TouchableOpacity, Image} from 'react-native';
-import inboxData from '../../data/InboxData'
+import {getChats} from '../../services/api'
 import {SimpleLineIcons} from '@expo/vector-icons';
 import Maincontainer from '../../components/mainContainer'
 import Text from '../../components/forms/Text'
+import ChatItem from '../../components/chatComponents/chatItem'
 import Colors from '../../styles/colors'
 
 
@@ -14,10 +15,16 @@ export default class Inbox extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            Data: inboxData
+            Data: [],
         }
         this.onPressAlerts = this.onPressAlerts.bind(this)
         this._onPressRow = this._onPressRow.bind(this)
+    }
+
+    componentDidMount() {
+        getChats().then(chat => this.setState({
+            Data: chat
+        }))
     }
 
     onPressAlerts() {
@@ -26,9 +33,10 @@ export default class Inbox extends React.Component {
 
     _renderRow(data) {
         let rowData = data.item
+        const {id, userName} = rowData
         return(
             <TouchableOpacity
-                onPress={this._onPressRow}
+                onPress={() => this.props.navigation.navigate('Chat', { id, userName })}
                 style={styles.row}
             >
                 <Image 
@@ -37,7 +45,7 @@ export default class Inbox extends React.Component {
                 />
                 <View style={styles.rightPart}>
                     <View style={styles.detail}>
-                        <Text style={styles.username}>{rowData.username}</Text>
+                        <Text style={styles.username}>{rowData.userName}</Text>
                         <Text style={styles.dataTime}>{rowData.createdDate}</Text>
                         <Text style={styles.description} ellipsizeMode='tail' numberOfLines={2}>{rowData.description}</Text>
                     </View>
@@ -70,8 +78,8 @@ export default class Inbox extends React.Component {
                     }}
                     enableEmptySection={true}
                     data={this.state.Data}
-                    renderItem={(rowData) => this._renderRow(rowData)}
-                    keyExtractor={(rowData, Index) => Index.toString()}
+                    renderItem={( item ) => this._renderRow(item)}
+                    keyExtractor={(rowData, Index) => (`message-${Index}`)}
                     removeClippedSubviews={false}
                     >
 

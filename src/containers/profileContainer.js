@@ -46,15 +46,14 @@ class Profile extends React.Component {
         let rowData = data.item
         return (
             <TouchableOpacity onPress={(rowData) => this._onPressRow(rowData)} style={ styles.row }>
-            <View style={ styles.rowLeftParts }>
-                <Text type='h4'>{ rowData.name }</Text>
-                {
-                    (rowData.description) ? <Text style={ styles.description }>{ rowData.description }</Text> : null
-                }
-            </View>
-            <MaterialIcons name={ rowData.iconName }  size={25} style={ styles.rowIcon } />
-            
-        </TouchableOpacity>
+                <View style={ styles.rowLeftParts }>
+                    <Text type='h4'>{ rowData.name }</Text>
+                    {
+                        (rowData.description) ? <Text style={ styles.description }>{ rowData.description }</Text> : null
+                    }
+                </View>
+                <MaterialIcons name={ rowData.iconName }  size={25} style={ styles.rowIcon } />     
+            </TouchableOpacity>
         )
     }
 
@@ -63,17 +62,9 @@ class Profile extends React.Component {
     }
 
     handleLogOut() {
-        alert('logout pressed')
-        this.props.navigation.dispatch(
-            {
-                type: 'Navigation',
-                routeName: 'AppNavigator',
-                action: {
-                    type: 'Navigation',
-                    routeName: 'LoggedOut',
-                }
-            });
+        const {navigate} = this.props.screenProps.rootNavigation
         AsyncStorage.removeItem('fb_token') 
+        navigate('LoggedOut') 
     }
 
     render() {
