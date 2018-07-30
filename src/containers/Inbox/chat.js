@@ -5,14 +5,11 @@ import {
     KeyboardAvoidingView, 
     Platform, 
     FlatList} from 'react-native';
-import * as Animatable from 'react-native-animatable'
 import {getMessages, pushMessage} from '../../services/api';
 import Compose from '../../components/chatComponents/compose';
-import Text from '../../components/forms/Text';
-import MainContainer from '../../components/mainContainer';
 import {MaterialIcons} from '@expo/vector-icons'
 import Colors from '../../styles/colors'
-import {USER_ID} from '../../services/api'
+import {message} from '../../components/chatComponents/message'
 
 
 export default class Chat extends React.Component {
@@ -29,24 +26,13 @@ export default class Chat extends React.Component {
 
     componentDidMount() {
         this.unsubcribeGetMessages = getMessages((snapshot) => {
-            console.log(snapshot.val())
             this.setState({
-                messages: snapshot.val()
+                messages: Object.values(snapshot.val())
             })
         })
-    }    
-
-    _renderMessage(item) {
-        console.log(item)
-        const incoming = item.userId !== USER_ID
-        return (
-            <Animatable.View>
-                duration={100}
-                animation={incoming ? 'slideInLeft' : 'slideInRight'}
-                style={[styles.message, incoming && styles.incomingMessage]}
-                <Text>{item.message}</Text>
-            </Animatable.View>
-        )
+    }
+    componentWillUnmount() {
+        this.unsubcribeGetMessages()
     }
 
     render() {
@@ -59,7 +45,7 @@ export default class Chat extends React.Component {
                     <FlatList 
                         style={styles.container}
                         data={this.state.messages}
-                        renderItem={( item ) => console.log('here is your thing',item)}
+                        renderItem={message}
                         keyExtractor={(item, Index) => `chat-message-${Index}`}
                     >
                     </FlatList>

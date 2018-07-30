@@ -13,13 +13,7 @@ export const getChats = () => (
 export const initApi = () => initialize();
 
 
-export const getMessages = (updaterFn) => setListener('messages', (snapshot) => {
-    console.log(snapshot)
-    if (snapshot){
-      updaterFn(snapshot);
-    }
-    
-  });
+export const getMessages = (updaterFn) => setListener('messeges', updaterFn);
 
 export const pushMessage = (message) => {
     if(Boolean(message)) {
